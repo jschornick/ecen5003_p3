@@ -1,0 +1,9 @@
+d2l_files
+*.pdf
+*.zip
+.#*
+*.o
+*.wav
+*_notes.txt
+*.png
+*.jpg
