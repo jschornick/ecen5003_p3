@@ -141,11 +141,14 @@ char pcm_to_ulaw(short pcm) {
 short ulaw_to_pcm(char ulaw) {
   // encoded bits: seeemmmm  (sign, exp, mantissa)
   // flip all bits, per ulaw spec
-  ulaw = ~ulaw;
-  unsigned char s = (ulaw & SIGN_MASK) >> 7;
-  unsigned char e = (ulaw & EXP_MASK) >> 4;
-  unsigned char m = (ulaw & MANT_MASK);
+  unsigned char s;
+  unsigned char e;
+  unsigned char m;
   short out;
+  ulaw = ~ulaw;
+  s = (ulaw & SIGN_MASK) >> 7;
+  e = (ulaw & EXP_MASK) >> 4;
+  m = (ulaw & MANT_MASK);
 
   out = m;
   out |= 0x10;  // add leading 1 to mantissa (abcd -> 1abcd)
